@@ -1,11 +1,18 @@
-#Connects to the Microsoft Online Service. If you're using this command on a new computer, you'll want to Import-MsolService first.
+# The UPN of an object in Azure AD will not synchronize with an On-Premise AD, despite all other aspects of the object changing simply. This results in users being unable to
+# sign into the account they had their UPN changed for, particularly if the UPN is an email address. This UPN can only be changed through PowerShell. Use the commands below
+# to do that.
+
+# Imports the Microsoft Online Service.
+Import-MsolService
+
+# Connects to the Microsoft Online Service. If you're using this command on a new computer, you'll want to Import-MsolService first.
 Connect-MsolService
 
-#Check on the status of the account in question. The UPN is either the username or a full email address, depending on the environment.
+# Check on the status of the account in question. The UPN is either the username or a full email address, depending on the environment.
 Get-MsolUser -UserPrincipalName [String]
 
-#After validating the account information, prepare to change the UPN with the following.
+# After validating the account information, prepare to change the UPN with the following.
 Set-UserPrincipalName -UserPrincipalName [String] -NewUserPrincipalName [String]
 
-#For good measure, repeat this command to check if it worked. 
+# For good measure, repeat this command to check if it worked. 
 Get-MsolUser -UserPrincipalName [String]

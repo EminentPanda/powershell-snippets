@@ -1,0 +1,11 @@
+#Connects to the Microsoft Online Service. If you're using this command on a new computer, you'll want to Import-MsolService first.
+Connect-MsolService
+
+#Check on the status of the account in question. The UPN is either the username or a full email address, depending on the environment.
+Get-MsolUser -UserPrincipalName [String]
+
+#After validating the account information, prepare to change the UPN with the following.
+Set-UserPrincipalName -UserPrincipalName [String] -NewUserPrincipalName [String]
+
+#For good measure, repeat this command to check if it worked. 
+Get-MsolUser -UserPrincipalName [String]

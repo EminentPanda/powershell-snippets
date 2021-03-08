@@ -12,7 +12,7 @@ Connect-MsolService
 Get-MsolUser -UserPrincipalName [String]
 
 # After validating the account information, prepare to change the UPN with the following.
-Set-UserPrincipalName -UserPrincipalName [String] -NewUserPrincipalName [String]
+Set-MsolUserPrincipalName -UserPrincipalName [String] -NewUserPrincipalName [String]
 
 # For good measure, repeat this command to check if it worked. 
 Get-MsolUser -UserPrincipalName [String]
